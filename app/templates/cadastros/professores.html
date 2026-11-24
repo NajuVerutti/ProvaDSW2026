@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Cadastro de Professores{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Cadastro de Professores</h1>
+</div>
+
+<h3>Cadastrar novo professor</h3>
+
+{{ wtf.quick_form(form) }}
+<hr>
+<h3>Professores cadastrados</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome do Professor</th>
+            <th>Disciplina</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in user_all %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.role.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
